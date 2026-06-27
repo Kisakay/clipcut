@@ -1,0 +1,3 @@
+bun build ./clipcut.ts --compile --outfile clipcut
+patchelf --set-interpreter "$(patchelf --print-interpreter $(which bun))" ./clipcut
+mv clipcut ~/.local/bin/
