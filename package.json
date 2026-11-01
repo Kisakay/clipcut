@@ -2,13 +2,35 @@
   "name": "clipcut",
   "version": "1.0.0",
   "description": "TUI pour découper des enregistrements vidéo avec ffmpeg",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Anais Saraiva",
+  "module": "clipcut.ts",
+  "bin": {
+    "clipcut": "./clipcut.ts"
+  },
+  "files": [
+    "clipcut.ts",
+    "config.ts"
+  ],
   "scripts": {
     "start": "bun run clipcut.ts",
-    "build": "bun build clipcut.ts --compile --outfile clipcut"
+    "dev": "bun --watch run clipcut.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "bun build ./clipcut.ts --compile --outfile clipcut",
+    "install:local": "sh ./install.sh",
+    "clean": "rm -f clipcut"
   },
-  "dependencies": {},
+  "engines": {
+    "bun": ">=1.3.0"
+  },
+  "os": [
+    "linux"
+  ],
   "devDependencies": {
     "@types/node": "^26.0.1",
-    "bun-types": "1.3.14"
+    "bun-types": "1.3.14",
+    "typescript": "^5.9.3"
   }
 }

@@ -2,6 +2,7 @@
 import { readdirSync, statSync } from "node:fs";
 import { join, basename } from "node:path";
 import { spawn } from "node:child_process";
+import { RECORDS_DIR } from "./config";
 
 // ─── ANSI helpers ────────────────────────────────────────────────────────────
 const ESC = "\x1b[";
@@ -103,8 +104,6 @@ function fillBg(x: number, y: number, w: number, h: number, bg: string) {
 }
 
 // ─── Video file discovery ─────────────────────────────────────────────────────
-const RECORDS_DIR = "/home/kisakay/Videos/Records";
-
 function getLastMp4s(
   dir: string,
   n = 10,
@@ -236,7 +235,7 @@ async function screenSelector(
     write(`${C.bgAccent}${C.bWhite}${C.bold}${header.padEnd(cols)}${C.reset}`);
     moveTo(2, 1);
     write(
-      `${C.bgAccent}${C.dim}${C.white}${"  /home/kisakay/Videos/Records  ·  10 derniers fichiers MP4".padEnd(cols)}${C.reset}`,
+      `${C.bgAccent}${C.dim}${C.white}${`  ${RECORDS_DIR}  ·  10 derniers fichiers MP4`.padEnd(cols)}${C.reset}`,
     );
 
     // List
